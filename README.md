@@ -1,4 +1,4 @@
-# Розгортання Vchasno Device Manager за допомогою Docker-Compose
+# Розгортання Вчасно Device Manager + PostgreSQL за допомогою Docker-Compose
 
 ## Необхідні умови
 - Установлені Docker та Docker Compose на вашій системі.
