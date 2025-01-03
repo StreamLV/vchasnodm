@@ -5,8 +5,10 @@ services:
       dockerfile: ./Dockerfile
     working_dir: /usr/share/edm
     volumes:
-      - ./vchasno/logs_dir:/usr/share/edm/Logs
-      - ./vchasno/database_dir:/var/lib/edm
+     - ./vchasno/logs_dir:/usr/share/edm/Logs
+     - ./vchasno/share/EDMSrv.ini:/usr/share/edm/EDMSrv.ini
+    #  - ./vchasno/database_dir:/var/lib/edm
+    # - ./vchasno/share/edm:/usr/share/edm
     ports:
       - "8055:3939"
     command: /usr/share/edm/EDMSrv

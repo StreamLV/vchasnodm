@@ -45,11 +45,25 @@ docker compose up -d
 ---
 
 ### 5. Налаштуйте Device Manager
-1. Відкрийте браузер і перейдіть за адресою:
+
+#### Варіант 1 (за наявності рядку в `docker-compose.yml`):
+1. Якщо у файлі `docker-compose.yml` є рядок (за замовчуванням):
+   ```
+   - ./vchasno/share/EDMSrv.ini:/usr/share/edm/EDMSrv.ini
+   ```
+2. Відкрийте файл `vchasno/share/EDMSrv.ini`.
+3. Змініть значення змінної `Pass` на ваш пароль `YOUR_POSTGRES_PASSWORD` з файлу `docker-compose.yml`.
+
+#### Варіант 2 (за відсутності або закоментованому рядку):
+1. Закоментуйте або видаліть рядок:
+   ```
+   #- ./vchasno/share/EDMSrv.ini:/usr/share/edm/EDMSrv.ini
+   ```
+2. Відкрийте браузер і перейдіть за адресою:
    ```
    http://YOUR_SERVER:8055/dm/vchasno-kasa/settings.html
    ```
-2. Оновіть конфігурацію бази даних наступним чином:
+3. Оновіть конфігурацію бази даних наступним чином:
    - **Тип бази даних:** PostgreSQL
    - **IP сервера:** `vchasno_postgres`
    - **Порт сервера:** `5432`
