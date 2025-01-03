@@ -27,6 +27,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: YOUR_POSTGRES_PASSWORD
+      TZ: Europe/Kiev
     logging:
       driver: 'json-file'
       options:

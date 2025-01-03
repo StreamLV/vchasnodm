@@ -1,7 +1,13 @@
 FROM amd64/ubuntu:24.04
 
+# Задання змінної середовища для часового поясу
+ENV TZ=Europe/Kyiv
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y tzdata curl \
+    && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata \
     && curl -s -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 --output /usr/bin/jq \
     && chmod +x /usr/bin/jq \
     && DM_STABLE=`curl -s https://kasa.vchasno.ua/api/v2/dm/versions | jq -r '.ver.linux.x64'` \
