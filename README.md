@@ -1,1 +1,1 @@
-# vchasnodm
+# vchasno device manager docker-compose with postgresql

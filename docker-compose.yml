@@ -1,0 +1,53 @@
+services:
+  vchasno_dm:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /usr/share/edm
+    volumes:
+      - ./vchasno/logs_dir:/usr/share/edm/Logs
+      - ./vchasno/database_dir:/var/lib/edm
+    ports:
+      - "8055:3939"
+    command: /usr/share/edm/EDMSrv
+    container_name: vchasno_dm
+    restart: unless-stopped
+    depends_on:
+      - vchasno_postgres
+    links:
+      - vchasno_postgres
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+  vchasno_postgres:
+    image: postgres
+    container_name: vchasno_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: YOUR_POSTGRES_PASSWORD
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '512m'
+    volumes:
+      - ./postgresql/shared/home:/home
+      - ./postgresql/db/data:/var/lib/postgresql/data
+  vchasno_pgadmin:
+    image: dpage/pgadmin4
+    container_name: vchasno_pgadmin
+    restart: unless-stopped
+    links:
+      - vchasno_postgres
+    depends_on:
+      - vchasno_postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dm@vchasno.com
+      PGADMIN_DEFAULT_PASSWORD: YOUR_PGADMIN_PASSWORD
+    ports:
+      - '8056:80'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '512m'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
