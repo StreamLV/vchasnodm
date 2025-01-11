@@ -3,3 +3,4 @@
 *.log
 */*/*.s3db
 */*/*.s3db-wal
+vchasno/logs_dir/*/*.zip
