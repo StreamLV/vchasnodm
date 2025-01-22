@@ -1,6 +1,10 @@
 */*/*.log
 */*.log
 *.log
+*/*/*.zip
+*/*.zip
+*.zip
 */*/*.s3db
 */*/*.s3db-wal
 vchasno/logs_dir/*/*.zip
+postgresql/db/data
