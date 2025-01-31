@@ -97,7 +97,10 @@ http://YOUR_SERVER:8055/dm/vchasno-kasa/dashboard.html
 ---
 
 ## Примітки - 2
- - При необхідності створіть в docker мережу docker network create dm_shared_network
+ - При необхідності створіть в docker мережу:
+   ```
+   docker network create dm_shared_network
+   ```
  - пропишіть мережу в docker-compose файл в потріних сервісах:
    ```
    networks:
