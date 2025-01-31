@@ -93,3 +93,19 @@ docker compose up -d
 ```
 http://YOUR_SERVER:8055/dm/vchasno-kasa/dashboard.html
 ```
+
+---
+
+## Примітки - 2
+ - При необхідності створіть в docker мережу docker network create dm_shared_network
+ - пропишіть мережу в docker-compose файл в потріних сервісах:
+   ```
+   networks:
+      - shared_network
+   ```
+ - додайте networks в docker-compose файл:
+   ```
+   networks:
+      shared_network:
+         external: true
+   ```
